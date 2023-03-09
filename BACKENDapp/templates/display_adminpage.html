@@ -1,0 +1,77 @@
+<!--<!DOCTYPE html>-->
+{% extends 'indexpage.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DISPLAY ADMIN</title>
+</head>
+<body>
+<div class="card">
+              <div class="card-header">
+                <h3 class="card-title">ADMIN DETAILS</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>NAME</th>
+                      <th>EMAIL</th>
+                      <th>NUMBER</th>
+                      <th>USER NAME</th>
+                      <th>PASSWORD</th>
+                      <th>IMAGE</th>
+                        <th> </th>
+                        <th> </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for d in data %}
+                  <tr>
+                      <td>{{d.NAME}}</td>
+                      <td>{{d.EMAIL}}</td>
+                      <td>{{d.NUMBER}}</td>
+                      <td>{{d.USERNAME}}</td>
+                      <td>{{d.PASSWORD}}</td>
+                      <td>
+                          <img src="{{d.IMAGE.url}}" width="50px", height="50px">
+                      </td>
+                      <td>
+                          <form action="{% url 'editadminpage' dataid=d.id%}">
+                             <button type="submit" class="btn btn-block btn-success">EDIT</button>
+                          </form>
+                    </td>
+                      <td>
+                          <form action="{% url 'deleteadminpage' dataid=d.id %}">
+                             <button onclick="alertfunction()" type="submit" class="btn btn-block btn-danger">DELETE</button>
+                          </form>
+                    </td>
+
+
+                  </tr>
+
+                  {% endfor %}
+
+                  </tbody>
+                </table>
+<!--              </div>-->
+<!--              &lt;!&ndash; /.card-body &ndash;&gt;-->
+<!--              <div class="card-footer clearfix">-->
+<!--                <ul class="pagination pagination-sm m-0 float-right">-->
+<!--                  <li class="page-item"><a class="page-link" href="#">«</a></li>-->
+<!--                  <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+<!--                  <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--                  <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--                  <li class="page-item"><a class="page-link" href="#">»</a></li>-->
+<!--                </ul>-->
+<!--              </div>-->
+<!--            </div>-->
+                  <script>
+  function alertfunction(){
+  window.alert("DELETED SUCCESSFULLY")
+  }
+</script>
+</body>
+</html>
+{% endblock %}

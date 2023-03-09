@@ -1,0 +1,52 @@
+<!--<!DOCTYPE html>-->
+{% extends 'indexpage.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DISPLAY CATEGORY</title>
+</head>
+<body>
+<div class="card">
+              <div class="card-header">
+                <h3 class="card-title">DISPLAY MESSAGES</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>NAME</th>
+                      <th>EMAIL</th>
+                        <TH>SUBJECT</TH>
+                        <TH>MESSAGE</TH>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for d in data %}
+                  <tr>
+                      <td>{{d.NAME}}</td>
+                      <td>{{d.EMAIL}}</td>
+                      <td>{{d.SUBJECT}}</td>
+                      <td>{{d.MESSAGE}}</td>
+                      <td>
+                          <form action="{% url 'deletemessage' dataid=d.id %}">
+                             <button onclick="alertfunction()" type="submit" class="btn btn-block btn-danger">DELETE</button>
+                          </form>
+                    </td>
+
+
+                  </tr>
+
+                  {% endfor %}
+
+                  </tbody>
+                </table>
+                  <script>
+  function alertfunction(){
+  window.alert("DELETED SUCCESSFULLY")
+  }
+</script>
+</body>
+</html>
+{% endblock %}

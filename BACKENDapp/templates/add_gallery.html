@@ -1,0 +1,43 @@
+<!--<!DOCTYPE html>-->
+{% extends 'indexpage.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD ADMIN</title>
+</head>
+<body>
+<div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">ADD IMAGE</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="post" action="{% url 'savegallerypage' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>NAME</label>
+                    <input type="text" class="form-control" id="" placeholder="Enter Name" name="name">
+                  <div class="form-group">
+                    <label>File input</label>
+                    <div class="input-group">
+                      <input type="file" name="image">
+                    </div>
+                  </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button  onclick="alertfunction()"type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+              </form>
+            </div>
+<script>
+  function alertfunction(){
+  window.alert("ADDED SUCCESSFULLY")
+  }
+</script>
+</body>
+</html>
+{% endblock %}

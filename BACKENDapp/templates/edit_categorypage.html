@@ -1,0 +1,49 @@
+<!--<!DOCTYPE html>-->
+{% extends 'indexpage.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD CATEGORY</title>
+</head>
+<body>
+<div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">DISPLAY CATEGORY</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="post" action="{% url 'updatecategory' dataid=data.id %}" enctype="multipart/form-data">
+                  {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>NAME</label>
+                    <input type="text" class="form-control" id="" placeholder="ENTER NAME " NAME="name" value="{{data.NAME}}">
+                  </div>
+                  <div class="form-group">
+                    <label>DISCRIPTION</label>
+                    <input type="text" class="form-control" id="" placeholder="ENTER THE DISCRIPTION " NAME="discription" value="{{data.DISCRIPTION}}">
+                  </div>
+                  <div class="form-group">
+                    <label>File input</label>
+                    <div class="input-group">
+                        <img src="{{data.IMAGE.url}}"} width="100px" height="100px">
+                      <input type="file" name="image">
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button onclick="alertfunction()" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+<script>
+  function alertfunction(){
+  window.alert("EDITED SUCCESSFULLY")
+  }
+</script>
+</body>
+</html>
+{% endblock %}>

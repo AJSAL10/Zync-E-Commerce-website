@@ -1,0 +1,64 @@
+<!--<!DOCTYPE html>-->
+{% extends 'indexpage.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DISPLAY PRODUCT</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DISPLAY PRODUCT</title>
+</head>
+<body>
+<div class="table-responsive">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th> CATEGORY </th>
+                            <th> NAME </th>
+                              <th> QUANTITY </th>
+                            <th> PRIZE </th>
+                            <th> SPECIFICATION </th>
+                            <TH> IMAGE</TH>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for d in data %}
+                          <tr>
+                          <td>{{d.CATEGORY }}</td>
+                          <td>{{d.NAME }}</td>
+                              <td>{{d.QUANTITY }}</td>
+                          <td>{{d.PRIZE }}</td>
+                          <td>{{d.SPECIFICATION }}</td>
+                          <td>
+                              <img src=" {{d.IMAGE.url }} " width="80px" height="80px">
+                          </td>
+                              <td>
+                                  <form action="{% url 'editproductpage' dataid=d.id %}">
+                                  <button onclick="" type="submit" class="btn btn-success">EDIT</button>
+                                  </form>
+                              </td>
+                              <td>
+                                  <form action="{% url 'deleteproductpage' dataid=d.id %}">
+                                  <button onclick="alertfunction()" type="submit" class="btn btn-danger">DELETE</button>
+                                  </form>
+                              </td>
+                          </tr>
+                            {% endfor %}
+                      </table>
+                    </div>
+<script>
+  function alertfunction(){
+  window.alert("DELETED SUCCESSFULLY")
+  }
+</script>
+
+</body>
+</html>
+</body>
+</html>
+{% endblock %}
